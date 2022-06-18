@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Models\User;
+use Carbon\Carbon;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class CreateSuperUserSeeder extends Seeder
 {
@@ -16,10 +18,20 @@ class CreateSuperUserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $superUser = User::create([
             'email' => 'admin@gmail.com',
             'name' => 'admin',
-            'password' => Hash::make('admin');
+            'password' => Hash::make('admin'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
+
+        $role = Role::create([
+            'name' => 'super-user',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $superUser->assignRole('super-user');
     }
 }
