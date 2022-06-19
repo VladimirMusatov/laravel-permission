@@ -22,6 +22,9 @@ Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])-
 Route::get('/create_article',[MainController::class,'form'])->name('form');
 Route::post('/store',[MainController::class,'store'])->name('store');
 
+Route::get('/edit/{id}',[MainController::class,'edit'])->name('edit');
+Route::post('/update/{id}',[MainController::class,'update'])->name('update');
+
 Route::get('/delete/{id}',[MainController::class,'delete'])->name('delete');
 
 require __DIR__.'/auth.php';

@@ -24,7 +24,7 @@
                     <h5 class="card-title">{{$post->name}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                     <p class="card-text">{{$post->text}}</p>
-                    <a href="#" class="card-link btn btn-warning">Edit</a>
+                    <a href="{{route('edit',$post->id)}}" class="card-link btn btn-warning">Edit</a>
                     <a href="{{route('delete',$post->id)}}" class="card-link btn btn-danger">Delete</a>
                   </div>
                 </div>

@@ -35,6 +35,22 @@ class MainController extends Controller
 
     }
 
+    public function edit($id){
+
+        $post = Post::where('id',$id)->first();
+
+        return view('add-new_article',compact('post'));
+    }
+
+    public function update(Request $request , $id){
+
+        Post::where('id',$id)->update($request->only('name','text'));
+
+        return redirect('/dashboard');
+
+    }
+
+
     public function delete($id){
 
         Post::where('id',$id)->delete();
