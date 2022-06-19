@@ -17,7 +17,7 @@ class MainController extends Controller
 
     public function form(){
 
-        return view('add-new_article');
+        return view('form');
     }
 
     public function store(Request $request){
@@ -39,14 +39,22 @@ class MainController extends Controller
 
         $post = Post::where('id',$id)->first();
 
-        return view('add-new_article',compact('post'));
+        return view('form',compact('post'));
     }
 
     public function update(Request $request , $id){
 
+        $request ->validate([
+
+            'name' => 'required|string|max:255',
+            'text' => 'required|string',
+
+        ]);
+
+
         Post::where('id',$id)->update($request->only('name','text'));
 
-        return redirect('/dashboard');
+        return redirect('dashboard');
 
     }
 

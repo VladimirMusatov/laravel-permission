@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->group(function(){
+
 Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/create_article',[MainController::class,'form'])->name('form');
 Route::post('/store',[MainController::class,'store'])->name('store');
@@ -26,5 +29,9 @@ Route::get('/edit/{id}',[MainController::class,'edit'])->name('edit');
 Route::post('/update/{id}',[MainController::class,'update'])->name('update');
 
 Route::get('/delete/{id}',[MainController::class,'delete'])->name('delete');
+
+Route::resource('roles',RoleController::class);
+
+});
 
 require __DIR__.'/auth.php';

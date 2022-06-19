@@ -26,7 +26,7 @@
 <!-- Create Post Form -->
   <form method="POST" class="mt-3" style="width:50%; margin: 0 auto;"
    @if(isset($post))
-   action="{{route('update',$post->id)}}" 
+   action="{{route('update',$post->id)}}"
    @else
    action="{{route('store')}}"
    @endif>
