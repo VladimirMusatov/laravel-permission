@@ -5,13 +5,31 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+    <div class="container mt-6">
+
+        @if (session('status'))
+          <div class="alert alert-success mt-3">
+              {{session('status')}}
+          </div>
+        @endif
+
+        <div class="mb-5">
+            <a href="{{route('form')}}" class="btn btn-success">Add new article</a>
+        </div>
+        <div class="row">
+            @foreach($posts as $post)
+            <div class="col-md-12 mt-3">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{$post->name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <p class="card-text">{{$post->text}}</p>
+                    <a href="#" class="card-link btn btn-warning">Edit</a>
+                    <a href="{{route('delete',$post->id)}}" class="card-link btn btn-danger">Delete</a>
+                  </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>

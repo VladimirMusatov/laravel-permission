@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[MainController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/create_article',[MainController::class,'form'])->name('form');
+Route::post('/store',[MainController::class,'store'])->name('store');
+
+Route::get('/delete/{id}',[MainController::class,'delete'])->name('delete');
 
 require __DIR__.'/auth.php';
