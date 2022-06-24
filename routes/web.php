@@ -31,6 +31,7 @@ Route::post('/update/{id}',[MainController::class,'update'])->name('update');
 Route::get('/delete/{id}',[MainController::class,'delete'])->name('delete');
 
 Route::resource('roles',RoleController::class);
+Route::get('/roles.destroy/{id}',[RoleController::class,'destroy'])->name('roles.destroy');
 
 });
 
