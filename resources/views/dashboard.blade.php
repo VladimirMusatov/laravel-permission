@@ -13,9 +13,11 @@
           </div>
         @endif
 
+        @if(auth()->user()->can('add posts'))
         <div class="mb-5">
             <a href="{{route('form')}}" class="btn btn-success">Add new article</a>
         </div>
+        @endif
         <div class="row">
             @foreach($posts as $post)
             <div class="col-md-12 mt-3">
@@ -24,8 +26,12 @@
                     <h5 class="card-title">{{$post->name}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                     <p class="card-text">{{$post->text}}</p>
-                    <a href="{{route('edit',$post->id)}}" class="card-link btn btn-warning">Edit</a>
+                     @if(auth()->user()->can('edit posts'))
+                        <a href="{{route('edit',$post->id)}}" class="card-link btn btn-warning">Edit</a>
+                     @endif
+                     @if(auth()->user()->can('delete posts'))
                     <a href="{{route('delete',$post->id)}}" class="card-link btn btn-danger">Delete</a>
+                     @endif
                   </div>
                 </div>
             </div>
