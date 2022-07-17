@@ -1,0 +1,27 @@
+.admin-nav{
+	display: flex;
+	margin-left: 60px;
+}
+
+.ad-nav-link{
+	text-decoration: none;
+	color: silver;
+	margin-right: 15px;
+}
+
+.ad-nav-link:hover{
+	cursor: pointer;
+	color: #121212;
+}
+
+.ad-nav-link.active{
+	color: #121212;
+}
+
+.tabs__item{
+	display: none;
+}
+
+.tabs__item.active{
+	display: block;
+}

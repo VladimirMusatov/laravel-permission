@@ -12,8 +12,9 @@ class UserController extends Controller
     public function index()
     {
       $users = User::orderBy('created_at')->get();
+      $roles = Role::orderBy('name')->get();
 
-      return view('users.index',compact('users'));  
+      return view('users.index',(['users'=>$users,'roles'=>$roles]));  
     }
 
     public function edit($id)

@@ -16,11 +16,8 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     @role('super-user')
-                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('dashboard')">
-                        Roles
-                    </x-nav-link>
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
-                        Users
+                        Admin Panel
                     </x-nav-link>
                     @endrole
                 </div>

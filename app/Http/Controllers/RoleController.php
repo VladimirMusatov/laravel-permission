@@ -9,13 +9,6 @@ use Illuminate\Http\Request;
 class RoleController extends Controller
 {
 
-    public function index()
-    {
-        $roles = Role::orderBy('name')->get();
-
-        return view('roles.index',compact('roles'));
-    }
-
     public function create()
     {
 
