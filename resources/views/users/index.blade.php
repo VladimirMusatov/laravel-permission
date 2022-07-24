@@ -4,10 +4,10 @@
     
           <nav class="admin-nav">
             <a class="ad-nav-link active" data-tab="#tab_1">
-              Roles
+              Users
             </a>
             <a class="ad-nav-link" data-tab="#tab_2">
-              Users
+              Roles
             </a>
           </nav>
     

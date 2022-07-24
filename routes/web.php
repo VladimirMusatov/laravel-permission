@@ -36,6 +36,7 @@ Route::group(['middleware' => ['role:super-user']], function () {
     Route::get('/roles.destroy/{id}',[RoleController::class,'destroy'])->name('roles.destroy');
 
     Route::resource('users', UserController::class);
+    Route::get('/users.destroy/{id}',[UserController::class, 'destroy'])->name('users.destroy');
 });
 
 
